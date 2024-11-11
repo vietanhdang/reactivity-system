@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <p>Count: <span id="count"></span></p>
+            <button id="increment">Increase Count</button>
+        </div>
+
+        <script src="./script.js"></script>
+        <script>
+            // Tạo dữ liệu phản ứng
+            const state = reactive({ count: 0 });
+
+            // Tự động cập nhật UI khi `state.count` thay đổi
+            effect(() => {
+                document.getElementById("count").innerText = state.count;
+            });
+
+            // Xử lý sự kiện nhấn nút để tăng giá trị `count`
+            document
+                .getElementById("increment")
+                .addEventListener("click", () => {
+                    state.count++;
+                });
+        </script>
+    </body>
+</html>
